@@ -6,10 +6,10 @@
 
 
 application:
-  push {lr}             
-  ldr 	r0, = string    
-  bl 	print_asciz        
-  pop 	{pc} 
+  push {lr} @push lr to stack            
+  ldr 	r0, = string @load string into r0
+  bl 	print_asciz  @branch link to print function
+  pop 	{pc} @pop programcounter out
 
 string:
   .asciz "Hello world, the ANSWER is 42! @[]`{}~\n"

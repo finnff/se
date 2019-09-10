@@ -26,19 +26,19 @@ done:
 toggle_case:
   ldrb    r0, [r0]   @load r0 registers
   cmp     r0, #96    @compare with 'a'
-  bls     lowercase  @branch lower if char is less than 96('a')
+  bls     lower  @branch lower if char is less than 96('a')
   cmp     r0, #122   @comapre with 'z'
   bhi     end        @branch end if char is higher than 122('z')
   sub     r0, r0, #32@subract 32 to capitalize
   b end              @end routine
   
-lowercase:
+lower:
   cmp     r0, #64    @compare with"A"
   bls     end        @branch if less than 64 
   cmp     r0, #90    @compare with "Z"
   bhi     end        @branch if higher than 90
-  add     r0, r0, #32@add 32 to lowercase
-  b end              @ end subroutine
+  add     r0, r0, #32@add 32 to lower
+  b end              @end subroutine
 
 end:
   mov pc, lr         @move program counter
