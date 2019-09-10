@@ -7,6 +7,14 @@
 *.o
 *.obj
 *.bc
+*.ld
+*.elf
+*.map
+*.bin
+
+
+
+
 
 ### C++ ###
 # Prerequisites

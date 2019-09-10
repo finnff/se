@@ -28,7 +28,7 @@ toggle_case:
   cmp     r0, #96    @compare with 'a'
   bls     lowercase  @branch lower if char is less than 96('a')
   cmp     r0, #122   @comapre with 'z'
-  bhi     lowercase  @branch lower if char is higher than 122('z')
+  bhi     end        @branch end if char is higher than 122('z')
   sub     r0, r0, #32@subract 32 to capitalize
   b end              @end routine
   
