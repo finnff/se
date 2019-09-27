@@ -1,8 +1,8 @@
-#include <iostream>
-// #include "fur_elise.hpp"
-// #include "hwlib.hpp"
-// #include "note_player_gpio.hpp"
-// #include "rtttl_player.hpp"
+#include "fur_elise.hpp"
+#include "hwlib.hpp"
+#include "note_player_gpio.hpp"
+#include "rtttl_player.hpp"
+#include "readnote.hpp"
 
 const char sos[] = "SOS:d=4,o=5,b=60:a,p,a,p,a,p,2a.,p,2a.,p,2a.,p,a,p,a,p,a";
 const char let_it_be[] =
@@ -23,14 +23,6 @@ const char one[] =
     "NumberOne:d=16,o=5,b=168:4f.,8c6,16b5,16c6,16b5,16c6,8b5,8c6,4g#5,4f.,8f,"
     "8g#5,8c6,4c#6,4g#5,4c#6,4d#6,8c6,8c#6,8c6,8c#6,2c6";
 
-int main(void) {
-  std::cout << "asdjasjdajsdjajs" << std::endl;
 
 
-
-  //  if( 0 ){ rtttl_play( p, sos ); }
-  //  if( 0 ){ rtttl_play( p, let_it_be );  }
-  //  if( 0 ){ rtttl_play( p, muppets );  }
-  //  if( 0 ){ rtttl_play( p, rickroll );  }
-  //  if( 0 ){ rtttl_play( p, one );  }
-}
+int main(void) { printnote(one); }
