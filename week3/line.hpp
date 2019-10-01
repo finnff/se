@@ -7,6 +7,9 @@
 
 #include "hwlib.hpp"
 
+
+//create line class that allows drawing of a hwlib:line with 2 Integers instead of a hwlib::xy vector.
+
 class line {
  private:
   hwlib::window& w;

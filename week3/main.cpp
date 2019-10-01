@@ -17,12 +17,14 @@ int main() {
   constexpr std::array<float, arrSize> Carr = fill_arrayCose();  // x
   constexpr std::array<float, arrSize> Sarr = fill_arraySine();  // y
 
-  // the window in which we want to print the line
+  // Uncomment for Native Window : ->
   // hwlib::target::window w(hwlib::xy(128, 64));
 
   hwlib::now_us();
 
   w.clear();
+
+  // Print Markers for hour every 30 degrees
 
   line one(w, 64 + (Carr[0 * 6] * 29), 32 + (Sarr[0 * 6] * 29),
            64 + (Carr[0 * 6] * 30), 32 + (Sarr[0 * 6] * 30));
@@ -51,10 +53,14 @@ int main() {
 
   for (;;) {
     u_int16_t hour = 0;
+    // after 60 mins, reset min counter to mins 0;
     while (hour < 60) {
       u_int16_t min = 0;
+      // Create start time, which later allows us to determine when a minute has
+      // passed.
       auto starttime = hwlib::now_us();
       while (min < 60) {
+        // Print Makers;
         one.print();
         two.print();
         three.print();
@@ -68,12 +74,17 @@ int main() {
         eleven.print();
         twelve.print();
 
+        // Create  and print Minute hand + Hour hand, with respective min and
+        // Hour values
+
         line minhand(w, 64, 32, 64 + (Carr[min * 6] * 25),
                      32 + (Sarr[min * 6] * 25));
         line hourhand(w, 64, 32, 64 + (Carr[hour * 6] * 18),
                       32 + (Sarr[hour * 6] * 18));
         minhand.print();
         hourhand.print();
+
+        // Interupts for buttons that offset Minute or hour but +1;
 
         if (!but1.read()) {
           min++;
@@ -87,19 +98,25 @@ int main() {
           w.clear();
         };
 
+        // requests new time after exectuting earlier parts of the loop.
         auto nowtime = hwlib::now_us();
         w.flush();
+
+        // If the timer difference is 60 Million us(60 secconds), a minute has
+        // passed. this increments the minute counter.
         if (nowtime >= (starttime + (60 * 1000 * 1000))) {
           starttime = hwlib::now_us();
           min++;
           w.clear();
         }
-
+        // Couts for Digital readout on Console.
         hwlib::cout << "Time: " << hour / 5 << " : " << min << hwlib::endl;
         hwlib::cout << ((nowtime - starttime) / 1000 / 1000) << hwlib::endl;
       }
+      // Increment hour by 5 degrees(1 hour), each time 60 minutes have passed.
       hour = hour + 5;
     }
+    // reset hour.
     hour = 0;
   }
 }
