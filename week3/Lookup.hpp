@@ -22,11 +22,8 @@ constexpr float CoseSingleAngle(u_int64_t hoek) {
   return cose;
 }
 
-
-
-//Intialize Array for each of the 360 degrees in a circle + /0 char.
+// Intialize Array for each of the 360 degrees in a circle + /0 char.
 const uint64_t arrSize = 361;
-
 
 // Create std array, which we append the Sine of each of the 360 degrees to.
 constexpr std::array<float, arrSize> fill_arraySine() {
@@ -36,7 +33,6 @@ constexpr std::array<float, arrSize> fill_arraySine() {
   }
   return SinArr;
 }
-
 
 // Create std array, which we append the Cos of each of the 360 degrees to.
 constexpr std::array<float, arrSize> fill_arrayCose() {
