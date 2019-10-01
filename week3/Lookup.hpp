@@ -1,3 +1,6 @@
+
+//Written by Finn Fonteijn 23-9-19
+
 #ifndef LOOKUP_HPP
 #define LOOKUP_HPP
 

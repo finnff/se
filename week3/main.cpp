@@ -1,3 +1,5 @@
+//Written by Finn Fonteijn 23-9-19
+
 #include "Lookup.hpp"
 #include "hwlib.hpp"
 #include "line.hpp"
