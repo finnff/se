@@ -6,11 +6,10 @@
 #include "Lookup.hpp"
 #include "hwlib.hpp"
 #include "line.hpp"
-  constexpr std::array<float, arrSize> Carr = fill_arrayCose();  // x
-  constexpr std::array<float, arrSize> Sarr = fill_arraySine();  // y
+constexpr std::array<float, arrSize> Carr = fill_arrayCose();  // x
+constexpr std::array<float, arrSize> Sarr = fill_arraySine();  // y
 
 const void DrawMarkers(hwlib::window &w) {
-
   line one(w, 64 + (Carr[0 * 6] * 29), 32 + (Sarr[0 * 6] * 29),
            64 + (Carr[0 * 6] * 30), 32 + (Sarr[0 * 6] * 30));
   line two(w, 64 + (Carr[5 * 6] * 29), 32 + (Sarr[5 * 6] * 29),

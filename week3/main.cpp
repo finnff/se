@@ -7,19 +7,19 @@ int main() {
   namespace target = hwlib::target;
 
   // Intialize OLED display
-  // auto scl = target::pin_oc(target::pins::d22);
-  // auto sda = target::pin_oc(target::pins::d23);
-  // auto i2c_bus = hwlib::i2c_bus_bit_banged_scl_sda(scl, sda);
-  // auto w = hwlib::glcd_oled(i2c_bus, 0x3c);
+  auto scl = target::pin_oc(target::pins::d22);
+  auto sda = target::pin_oc(target::pins::d23);
+  auto i2c_bus = hwlib::i2c_bus_bit_banged_scl_sda(scl, sda);
+  auto w = hwlib::glcd_oled(i2c_bus, 0x3c);
 
-  // auto but1 = hwlib::target::pin_in(target::pins::d42);
-  // auto but2 = hwlib::target::pin_in(target::pins::d44);
+  auto but1 = hwlib::target::pin_in(target::pins::d42);
+  auto but2 = hwlib::target::pin_in(target::pins::d44);
 
   constexpr std::array<float, arrSize> Carr = fill_arrayCose();  // x
   constexpr std::array<float, arrSize> Sarr = fill_arraySine();  // y
 
   // Uncomment for Native Window : ->
-  hwlib::target::window w(hwlib::xy(128, 64));
+  // hwlib::target::window w(hwlib::xy(128, 64));
 
   hwlib::now_us();
   u_int16_t hour;
@@ -48,17 +48,17 @@ int main() {
         hourhand.print();
 
         // Interupts for buttons that offset Minute or hour but +1;
-        // if (!but1.read()) {
-        //   min++;
-        //   w.clear();
-        // };
-        // if (!but2.read()) {
-        //   hour += 5;
-        //   if (hour >= 60) {
-        //     hour = 0;
-        //   };
-        //   w.clear();
-        // };
+        if (!but1.read()) {
+          min++;
+          w.clear();
+        };
+        if (!but2.read()) {
+          hour += 5;
+          if (hour >= 60) {
+            hour = 0;
+          };
+          w.clear();
+        };
 
         // requests new time after exectuting earlier parts of the loop.
         auto nowtime = hwlib::now_us();
