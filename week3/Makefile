@@ -12,7 +12,7 @@
 SOURCES :=
 
 # header files in this project
-HEADERS := Lookup.hpp line.hpp
+HEADERS := Lookup.hpp line.hpp markers.hpp
 
 # other places to look for files for this project
 SEARCH  := 
@@ -20,4 +20,4 @@ SEARCH  :=
 # set REATIVE to the next higher directory 
 # and defer to the Makefile.due there
 RELATIVE := $(RELATIVE)..
-include $(RELATIVE)/Makefile.due
+include $(RELATIVE)/Makefile.native
