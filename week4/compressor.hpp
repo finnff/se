@@ -58,13 +58,13 @@ class lz_compressor {
     for (int i = 0; i < used;) {
       auto match = find(i);
       if (match.length > 2) {
-        std::cout << "\ni=" << i << " m=" << match << " ";
+        // std::cout << "\ni=" << i << " m=" << match << " ";
         write('@');
         write('0' + match.offset);
         write('0' + match.length);
         i += match.length;
       } else {
-        std::cout << "\n" << i << " c=[" << buffer[ i ] << "]";
+        // std::cout << "\n" << i << " c=[" << buffer[ i ] << "]";
         write(buffer[i++]);
       }
     }
