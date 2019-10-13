@@ -1,8 +1,11 @@
 // Made by @finnff 2-10-19
-#include <fstream>
-#include <iostream>
 #include "compressor.hpp"
 #include "decompressor.hpp"
+#include <fstream>
+#include <iostream>
+
+extern "C" void armdecomp();
+
 int main() {
   lz_compressor<(16 * 4096)> compressor;
 
@@ -20,17 +23,12 @@ int main() {
     return -1;
   }
 
-
-
-
   // compressor.compress(
   //     [&f1]() -> int {
   //       auto c = f1.get();
   //       return f1.eof() ? '\0' : c;
   //     },
   //     [&f2](char c) { f2.put(c); });
-
-
 
   std::ofstream fa;
   fa.open("output.asm");
@@ -43,7 +41,7 @@ int main() {
     fa << ".text\n";
     fa << ".align 1\n";
     fa << ".global encoded\n";
-    fa<< ".asciz\"";
+    fa << ".asciz\"";
   }
 
   /*
@@ -60,9 +58,8 @@ int main() {
         return f1.eof() ? '\0' : c;
       },
       [&fa](char c) { fa.put(c); });
-      fa<< "\"";
-  
-  
+  fa << "\"";
+
   f1.close();
   f2.close();
   fa.close();
@@ -72,7 +69,7 @@ int main() {
   if (!f3.is_open()) {
     std::cerr << "reopening compressed failed";
     return -1;
-  }
+  };
 
   /*     2. Decoderen naar std::cout
   Neem de LZ encoder (code staat in de examples) en breidt die uit met een
@@ -81,7 +78,6 @@ int main() {
   */
 
   lz_decompressor decomp;
-
   decomp.decompress(
       [&f3]() -> int {
         auto c = f3.get();
