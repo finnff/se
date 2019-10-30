@@ -8,24 +8,10 @@
 # 
 #############################################################################
 
-	compiler := /bin/g++
-
-SOURCES := armdecomp.asm encoded.asm
-
-encoded : encoded.o 
-	$(compiler) encoded.o -o encoded
-
-encoded.o: compressor.hpp match.hpp compressor.cpp
-	$(compiler) -c compressor.cpp -o encoded.o
-
-
-
-
-
-
 # source files in this project (main.cpp is automatically assumed)
+SOURCES := armdecomp.asm print_asciz.asm encoded.asm
 # header files in this project
-HEADERS := match.hpp compressor.hpp
+HEADERS := 
 
 # other places to look for files for this project
 SEARCH  := 
