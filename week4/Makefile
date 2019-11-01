@@ -12,8 +12,6 @@
 
 SOURCES := armdecomp.asm encoded.asm
 
-encoded : encoded.o 
-	$(compiler) encoded.o -o encoded
 
 encoded.o: compressor.hpp match.hpp compressor.cpp
 	$(compiler) -c compressor.cpp -o encoded.o
