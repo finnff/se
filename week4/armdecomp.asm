@@ -30,7 +30,6 @@ loop1:
 	bl uart_put_char		// branch link to Print
 	b loop1							// restart loop1
 	
-	
 decode:
 	ADD R6, R4, R5				//move pointer R4[R5] into R6	
 	LDRB r6, [R6]					//Dereference pointer into R6	

@@ -10,14 +10,20 @@
 
 	compiler := /bin/g++
 
+
+.PHONY: build schoon
+
+schoon:
+	rm -f output.txt
+	rm -f encoded.asm
+	rm -f compressor.exe
+	touch output.txt
+
+encoded.asm:
+	$(compiler) compressor.cpp -o compressor.exe
+	./compressor.exe
+
 SOURCES := armdecomp.asm encoded.asm
-
-
-encoded.o: compressor.hpp match.hpp compressor.cpp
-	$(compiler) -c compressor.cpp -o encoded.o
-
-
-
 
 
 

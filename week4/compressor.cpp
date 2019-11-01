@@ -7,26 +7,26 @@ int main(void) {
   lz_compressor<4096> compressor;
 
   std::ifstream f1;
-  f1.open("wilhelmus.txt");
+  f1.open("cookies.txt");
   if (!f1.is_open()) {
     std::cerr << "input file not opened";
     return -1;
   }
 
   std::ofstream f2;
-  f2.open("compressed.txt");
+  f2.open("output.txt");
   if (!f2.is_open()) {
     std::cerr << "output file not opened";
     return -1;
   }
 
   std::ofstream f3;
-  f3.open("Wilhelmus.asm");
+  f3.open("encoded.asm");
   f3 << ".cpu cortex-m0 \n";
   f3 << ".align 2 \n";
   f3 << ".text \n";
-  f3 << ".global wilCoded \n \n";
-  f3 << "wilCoded: .asciz \"";
+  f3 << ".global encoded \n \n";
+  f3 << "encoded: .asciz \"";
   if (!f3.is_open()) {
     std::cerr << "output file not opened";
     return -1;
@@ -48,9 +48,4 @@ int main(void) {
   f2.close();
   f3.close();
 
-  f1.open("compressed.txt");
-  if (!f1.is_open()) {
-    std::cerr << "compressed file not opened";
-    return -1;
-  }
 }
